@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SolicitudesCompraAPP.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundImageSource="login.jpg"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        <StackLayout Padding="30,0,30,0" VerticalOptions="Center">
+
+            <Label Text="Nombre de Usuario" TextColor="White"/>
+            
+            <Entry x:Name="TxtUserName" Placeholder="Email" HorizontalTextAlignment="Center" TextColor="White" FontSize="Large"/>
+            
+            <Label Text="Contraseña" TextColor="White" />
+            
+            <Entry x:Name="TxtPassword" Placeholder="*********" HorizontalTextAlignment="Center"  TextColor="White" IsPassword="True" FontSize="Large"/>
+            
+            <Switch x:Name="SeePassword" IsToggled="false" Toggled="CmdSeePassword" />
+            
+            <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Ingresar" BackgroundColor="White" TextColor="#376C9B" CornerRadius="25"/>
+            
+            <Button x:Name="BtnRegister" VerticalOptions="Center" Text="Registrarse" Clicked="BtnRegister_Clicked" BackgroundColor="Blue" TextColor="White" CornerRadius="25"/>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
