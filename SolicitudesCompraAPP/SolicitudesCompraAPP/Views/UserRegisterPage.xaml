@@ -3,10 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SolicitudesCompraAPP.Views.UserRegisterPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20,10,20,0">
+            <Label Text="Identificación" />
+            <Entry Placeholder="123456789" />
+            <Label Text="Correo" />
+            <Entry x:Name="TxtEmail" Keyboard="Email" Placeholder="username@email.com" />
+            <Label Text="Contraseña" />
+            <Entry x:Name="TxtPassword" Placeholder="******" IsPassword="True" />
+            <Switch x:Name="SwPassword" IsToggled="false" Toggled="SwPassword_Toggled" />
+            <Label Text="Nombre" />
+            <Entry x:Name="TxtFirstName" Placeholder="John" />
+            <Label Text="Apellidos" />
+            <Entry x:Name="TxtLastName" Placeholder="Doe" />
+            <Label Text="Teléfono" />
+            <Entry x:Name="TxtPhone" Keyboard="Telephone" Placeholder="88888888" />
+            <Label Text="Sucursal" />
+            <Picker x:Name="PckBranch" />
+            <Label Text="Rol" />
+            <Picker x:Name="PckRole"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

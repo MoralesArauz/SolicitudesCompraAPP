@@ -11,8 +11,8 @@ namespace SolicitudesCompraAPP.Models
             Users = new HashSet<User>();
         }
 
-        public string BranchId { get; set; } = null!;
-        public string BranchName { get; set; } = null!;
+        public string BranchId { get; set; }
+        public string BranchName { get; set; }
         public bool? Status { get; set; }
 
         public virtual ICollection<User> Users { get; set; }

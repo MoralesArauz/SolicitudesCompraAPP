@@ -12,7 +12,7 @@ namespace SolicitudesCompraAPP.Models
         }
 
         public int UserRolId { get; set; }
-        public string Description { get; set; } = null!;
+        public string Description { get; set; }
         public bool? Status { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
