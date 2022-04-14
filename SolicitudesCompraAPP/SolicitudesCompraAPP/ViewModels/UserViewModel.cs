@@ -9,9 +9,12 @@ namespace SolicitudesCompraAPP.ViewModels
     public class UserViewModel : BaseViewModel
     {
         public User MyUser { get; set; }
+
+        public Tools.Crypto MyCrypto { get; set; }
         public UserViewModel()
         {
             MyUser = new User();
+            MyCrypto = new Tools.Crypto();
             // TODO: Implementar los command posteriormente
         }
 
@@ -28,10 +31,13 @@ namespace SolicitudesCompraAPP.ViewModels
 
             try
             {
-                // TODO: Hay que encriptar el password
                 MyUser.IdentificationCard = pIdCard;
                 MyUser.UserName = pUserName;
-                MyUser.Password = pPassword;
+
+                // Encriptación del password
+                string EncryptedPassword = MyCrypto.EncriptarEnUnSentido(pPassword);
+
+                MyUser.Password = EncryptedPassword;
                 MyUser.FirstName = pFirstName;
                 MyUser.LastName = pLastName;
                 MyUser.Phone = pPhone;
@@ -53,6 +59,32 @@ namespace SolicitudesCompraAPP.ViewModels
                 IsBusy = false;
             }
 
+        }
+
+        // Funcion para validar el permiso de acceso del usuario
+
+        public async Task<bool> ValidateUserAccess(string pEmail, string pPassword)
+        {
+            if (IsBusy) return false;
+            IsBusy = true;
+
+            try
+            {
+                string EncryptedPassword = MyCrypto.EncriptarEnUnSentido(pPassword);
+                MyUser.UserName = pEmail;
+                MyUser.Password=EncryptedPassword;
+
+                bool R = await MyUser.ValidateUserAccess();
+                return R;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally 
+            {
+                IsBusy = false; 
+            }
         }
     }
 }

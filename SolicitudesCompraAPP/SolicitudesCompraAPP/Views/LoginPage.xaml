@@ -22,7 +22,7 @@
             
             <Switch x:Name="SeePassword" IsToggled="false" Toggled="CmdSeePassword" />
             
-            <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Ingresar" BackgroundColor="White" TextColor="#376C9B" CornerRadius="25"/>
+            <Button x:Name="BtnLogin" Clicked="BtnLogin_Clicked" VerticalOptions="Center" Text="Ingresar" BackgroundColor="White" TextColor="#376C9B" CornerRadius="25"/>
             
             <Button x:Name="BtnRegister" VerticalOptions="Center" Text="Registrarse" Clicked="BtnRegister_Clicked" BackgroundColor="Blue" TextColor="White" CornerRadius="25"/>
             

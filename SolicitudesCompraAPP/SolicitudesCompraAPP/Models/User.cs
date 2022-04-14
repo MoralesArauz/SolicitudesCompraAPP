@@ -12,6 +12,10 @@ namespace SolicitudesCompraAPP.Models
     {
 
         public RestRequest request { get; set; }
+        
+        const string MIME_TYPE = "application/json";
+
+        const string CONTENT_TYPE = "Content-Type";
         public User()
         {
             request = new RestRequest();
@@ -50,14 +54,13 @@ namespace SolicitudesCompraAPP.Models
 
                 request = new RestRequest(FinalApiRoute, Method.Post);
 
-                string mimetype = "application/json";
                 // Agregar la info de seguridad, en este caso ApiKey
                 request.AddHeader(CnnToAPI.ApiKeyName, CnnToAPI.ApiKeyValue);
-                request.AddHeader("Content-Type", mimetype);
+                request.AddHeader(CONTENT_TYPE, MIME_TYPE);
 
                 // serializar esta clase para pasarla en el body
                 string SerializedClass = JsonConvert.SerializeObject(this);
-                request.AddBody(SerializedClass,mimetype);
+                request.AddBody(SerializedClass,MIME_TYPE);
                 // Esto envía la consulta al api y recibe una respuesta que debemos leer
                 RestResponse response = await cliente.ExecuteAsync(request);
 
@@ -75,6 +78,47 @@ namespace SolicitudesCompraAPP.Models
             }
             
                     
+            return R;
+        }
+
+        // Funcion para validar el acceso del usuario en el sistema
+
+        public async Task<bool> ValidateUserAccess()
+        {
+            bool R = false;
+
+            try
+            {
+                // Se agregan los parámetros para consumir el end point, se genera la ruta para después 
+                // adjuntar al URL base
+                string routeSufix = string.Format("Users/ValidateUserLogin?pEmail={0}&pPassword={1}",
+                                                    this.UserName, this.Password);
+
+                string FinalApiRoute = CnnToAPI.ProductionRoute + routeSufix;
+                
+                RestClient client = new RestClient(FinalApiRoute);
+                
+                request = new RestRequest(FinalApiRoute,Method.Get);
+
+                // Agregar la info de seguridad, en este caso ApiKey
+                request.AddHeader(CnnToAPI.ApiKeyName, CnnToAPI.ApiKeyValue);
+                request.AddHeader(CONTENT_TYPE, MIME_TYPE);
+
+                RestResponse response = await client.ExecuteAsync(request);
+
+                HttpStatusCode status = response.StatusCode;
+
+                if(status == HttpStatusCode.OK)
+                {
+                    R=true;
+                }
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                throw;
+            }
+
             return R;
         }
 

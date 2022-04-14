@@ -22,7 +22,7 @@
                 <Label Text="Sucursal" />
                 <Picker x:Name="PckBranch" />
                 <Label Text="Rol" />
-                <Picker x:Name="PckRole"/>
+                <Picker x:Name="PckRole" Title="Seleccione el Rol" TitleColor="Blue" />
 
 
                 <FlexLayout AlignContent="Center">
