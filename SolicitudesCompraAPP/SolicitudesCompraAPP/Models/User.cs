@@ -16,10 +16,11 @@ namespace SolicitudesCompraAPP.Models
         const string MIME_TYPE = "application/json";
 
         const string CONTENT_TYPE = "Content-Type";
+
         public User()
         {
             request = new RestRequest();
-
+            
             PurchaseOrderApplicants = new HashSet<PurchaseOrder>();
             PurchaseOrderBuyers = new HashSet<PurchaseOrder>();
         }
@@ -121,7 +122,6 @@ namespace SolicitudesCompraAPP.Models
 
             return R;
         }
-
 
     }
 }

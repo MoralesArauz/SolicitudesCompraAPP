@@ -20,9 +20,20 @@
                 <Label Text="Teléfono" />
                 <Entry x:Name="TxtPhone" Keyboard="Telephone" Placeholder="88888888" />
                 <Label Text="Sucursal" />
-                <Picker x:Name="PckBranch" />
+                <Picker x:Name="PckBranch"
+                        Title="--Seleccione una Sucursal--"
+                        TitleColor="Gray"
+                        ItemDisplayBinding="{Binding BranchName}"
+                 
+                        SelectedIndexChanged="PckBranch_SelectedIndexChanged">
+                </Picker>
                 <Label Text="Rol" />
-                <Picker x:Name="PckRole" Title="Seleccione el Rol" TitleColor="Blue" />
+                <Picker x:Name="PckRole" 
+                        Title="Seleccione el Rol" 
+                        TitleColor="Gray" 
+                        ItemDisplayBinding="{Binding Description}"
+                        
+                        SelectedIndexChanged="PckRole_SelectedIndexChanged"/>
 
 
                 <FlexLayout AlignContent="Center">
