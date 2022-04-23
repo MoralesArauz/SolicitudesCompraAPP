@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages ="clr-namespace:SolicitudesCompraAPP.Views"
+             x:Class="SolicitudesCompraAPP.Views.MainPage">
+    <FlyoutPage.Flyout>
+        <pages:Menu></pages:Menu>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <pages:Detail></pages:Detail>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

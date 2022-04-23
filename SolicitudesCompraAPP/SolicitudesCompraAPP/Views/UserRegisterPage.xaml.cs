@@ -44,12 +44,12 @@ namespace SolicitudesCompraAPP.Views
 
                 if (R)
                 {
-                    await DisplayAlert("!!", "El usuario se agregó correctamente", "OK");
+                    await DisplayAlert("Éxito", "El usuario se agregó correctamente", "OK");
                     await Navigation.PopAsync();
                 }
                 else
                 {
-                    await DisplayAlert(":)", "El usuario no se pudo agregar", "OK");
+                    await DisplayAlert("Error", "El usuario no se pudo agregar", "OK");
                 }
             }
         }

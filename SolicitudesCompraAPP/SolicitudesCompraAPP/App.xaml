@@ -27,6 +27,19 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+            <Style TargetType="Label" x:Key="Titulos">
+                <Setter Property="TextColor" Value="Blue"></Setter>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
+
+            <Style TargetType="Button" x:Key="MenuItem">
+                <Setter Property="TextColor" Value="#1C86C6"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="Background" Value="White"></Setter>
+                
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
     

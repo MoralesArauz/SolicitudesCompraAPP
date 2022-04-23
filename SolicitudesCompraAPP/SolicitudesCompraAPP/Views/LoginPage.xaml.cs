@@ -38,9 +38,9 @@ namespace SolicitudesCompraAPP.Views
             if (R)
             {
                 // TODO quitar este mensaje
-                await DisplayAlert("Éxito", "Usuario Correcto", "OK");
+                //await DisplayAlert("Éxito", "Usuario Correcto", "OK");
 
-                //await Navigation.PushAsync(new MainPage());
+                Application.Current.MainPage = new MainPage();
             }
             else
             {
