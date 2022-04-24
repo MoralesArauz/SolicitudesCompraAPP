@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SolicitudesCompraAPP.Views.CostumerPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar Nuevo" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <CollectionView x:Name="LstCostumers" SelectionMode="Single">
+                    <!--<CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>-->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                        Padding="5,5,5,5"
+                        CornerRadius="5"
+                        IsClippedToBounds="True">
+                                <Grid RowDefinitions="Auto,Auto"
+                                      ColumnDefinitions="Auto,Auto,Auto"
+                                      >
+                                                                        
+                                    <Label Grid.Column="0" 
+                                           FontSize="Large" 
+                                           Text="{Binding CostumerId}" 
+                                           VerticalOptions="Center" />
+                                    
+                                    <Label Grid.Column="1"
+                                        FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FirstName}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding LastName}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Column="3" 
+                                           FontSize="Medium" 
+                                           Text="{Binding Phone1}" 
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

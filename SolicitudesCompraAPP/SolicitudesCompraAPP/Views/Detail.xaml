@@ -4,10 +4,14 @@
              x:Class="SolicitudesCompraAPP.Views.Detail"
              Title="Inicio">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Página Principal"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="" ImageSource="logomsc.png" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
+    
 </ContentPage>

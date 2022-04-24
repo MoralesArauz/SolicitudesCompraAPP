@@ -40,7 +40,7 @@ namespace SolicitudesCompraAPP.Views
                 // TODO quitar este mensaje
                 //await DisplayAlert("Éxito", "Usuario Correcto", "OK");
 
-                Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new MainFlyoutPage();
             }
             else
             {
