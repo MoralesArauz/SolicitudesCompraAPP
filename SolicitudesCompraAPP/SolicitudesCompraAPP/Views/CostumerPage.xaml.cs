@@ -15,7 +15,7 @@ namespace SolicitudesCompraAPP.Views
     {
 
 
-        CostumerViewModel costumerViewModel;
+        readonly CostumerViewModel costumerViewModel;
         public CostumerPage()
         {
             InitializeComponent();

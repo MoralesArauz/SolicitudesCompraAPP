@@ -4,6 +4,7 @@ using System.Text;
 using SolicitudesCompraAPP.Models;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace SolicitudesCompraAPP.ViewModels
 {
@@ -12,16 +13,12 @@ namespace SolicitudesCompraAPP.ViewModels
         public User MyUser { get; set; }
 
         public Tools.Crypto MyCrypto { get; set; }
-
-        public virtual Branch MyBranch { get; set; }
         public virtual UserRol MyUserRol { get; set; }
-        public List<Branch> Branches { get; set; }
         public List<UserRol> Roles { get; set; }
         public UserViewModel()
         {
             MyUser = new User();
             MyCrypto = new Tools.Crypto();
-            Branches = new List<Branch>();
             Roles = new List<UserRol>();
             // TODO: Implementar los command posteriormente
         }
@@ -97,12 +94,11 @@ namespace SolicitudesCompraAPP.ViewModels
 
         // Genera una lista de las bodegas disponibles para poder cargarlas en el picker
         // TODO: cargar solamente los que son válidos
-        public async Task<List<Branch>> LoadBranches()
+        public async Task<ObservableCollection<Branch>> LoadBranches()
         {
-            MyBranch = new Branch();            
-            var branches = await MyBranch.GetBranches();
-            Branches = JsonConvert.DeserializeObject<List<Branch>>(branches);
-            return Branches;
+            var branches = await MyUser.Branch.GetBranches();
+            //Branches = JsonConvert.DeserializeObject<List<Branch>>(branches);
+            return branches;
         }
 
         public void SetBranch(string branch)
@@ -122,6 +118,41 @@ namespace SolicitudesCompraAPP.ViewModels
         public void SetRole(int role)
         {
             MyUser.UserRolId = role;
+        }
+
+
+        public async Task<ObservableCollection<User>> GetUsersList()
+        {
+            if (IsBusy)
+                return null;
+            else
+            {
+                IsBusy = true;
+                try
+                {
+                    ObservableCollection<User> list = new ObservableCollection<User>();
+
+                    list = await MyUser.GetUsers();
+
+                    if (list != null)
+                    {
+                        return list;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+            }
+
         }
     }
 }

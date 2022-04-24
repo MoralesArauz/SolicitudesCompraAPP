@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace SolicitudesCompraAPP.ViewModels
 {
-    public class CostumerViewModel : BaseViewModel
+    public class ProductViewModel : BaseViewModel
     {
+        Product MyProduct { get; set; }
 
-        Costumer MyCostumer { get; set; }
-
-        public CostumerViewModel()
+        public ProductViewModel()
         {
-            MyCostumer = new Costumer();
+            MyProduct = new Product();
         }
 
-
-        public async Task<ObservableCollection<Costumer>> GetCostumersList()
+        // Carga la lista de Productos
+        public async Task<ObservableCollection<Product>> GetProductsList()
         {
             if (IsBusy)
                 return null;
@@ -27,9 +26,9 @@ namespace SolicitudesCompraAPP.ViewModels
                 IsBusy = true;
                 try
                 {
-                    ObservableCollection<Costumer> list = new ObservableCollection<Costumer>();
+                    ObservableCollection<Product> list = new ObservableCollection<Product>();
 
-                    list = await MyCostumer.GetCostumers();
+                    list = await MyProduct.GetProducts();
 
                     if (list != null)
                     {
@@ -49,7 +48,8 @@ namespace SolicitudesCompraAPP.ViewModels
                     IsBusy = false;
                 }
             }
-        }
 
+
+        }
     }
 }

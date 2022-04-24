@@ -21,23 +21,14 @@
 
                                     <Label Grid.Column="0" 
                                                FontSize="Large" 
-                                               Text="{Binding CostumerId}" 
+                                               Text="{Binding BranchId}" 
                                                VerticalOptions="Center" />
 
-                                    <Label Grid.Column="1"
-                                            FontSize="Medium">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding FirstName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding LastName}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label Grid.Column="3" 
+                                    <Label Grid.Column="1" 
                                                FontSize="Medium" 
-                                               Text="{Binding Phone1}" 
+                                               Text="{Binding BranchName}" 
                                                VerticalOptions="Center" />
+                                    
                                 </Grid>
                             </Frame>
                         </DataTemplate>

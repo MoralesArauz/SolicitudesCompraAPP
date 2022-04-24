@@ -54,9 +54,9 @@ namespace SolicitudesCompraAPP.Models
                     R = response.Content;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                string msg = ex.Message;
+                //string msg = ex.Message;
                 throw;
             }
 

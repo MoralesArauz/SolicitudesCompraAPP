@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace SolicitudesCompraAPP.ViewModels
 {
-    public class CostumerViewModel : BaseViewModel
+    
+    public class BranchViewModel : BaseViewModel
     {
 
-        Costumer MyCostumer { get; set; }
+        Branch MyBranch { get; set; }
 
-        public CostumerViewModel()
+        public BranchViewModel()
         {
-            MyCostumer = new Costumer();
+            MyBranch = new Branch();
         }
 
-
-        public async Task<ObservableCollection<Costumer>> GetCostumersList()
+        // Carga la lista de sucursales
+        public async Task<ObservableCollection<Branch>> GetBranchesList()
         {
             if (IsBusy)
                 return null;
@@ -27,9 +28,9 @@ namespace SolicitudesCompraAPP.ViewModels
                 IsBusy = true;
                 try
                 {
-                    ObservableCollection<Costumer> list = new ObservableCollection<Costumer>();
+                    ObservableCollection<Branch> list = new ObservableCollection<Branch>();
 
-                    list = await MyCostumer.GetCostumers();
+                    list = await MyBranch.GetBranches();
 
                     if (list != null)
                     {
@@ -49,7 +50,8 @@ namespace SolicitudesCompraAPP.ViewModels
                     IsBusy = false;
                 }
             }
-        }
 
+
+        }
     }
 }

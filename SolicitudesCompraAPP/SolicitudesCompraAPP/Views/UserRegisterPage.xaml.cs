@@ -127,10 +127,10 @@ namespace SolicitudesCompraAPP.Views
                     return false;
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException )
             {
                 R = false;
-                string msg = ex.Message;
+                //string msg = ex.Message;
                 DisplayAlert(VALID_DATA, "Debe digitar toda la información", "Ok");
                 data.Focus();
             }

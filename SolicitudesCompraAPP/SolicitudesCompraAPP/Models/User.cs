@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System.Threading.Tasks;
 using System.Net;
+using System.Collections.ObjectModel;
 
 namespace SolicitudesCompraAPP.Models
 {
@@ -23,6 +24,7 @@ namespace SolicitudesCompraAPP.Models
             
             PurchaseOrderApplicants = new HashSet<PurchaseOrder>();
             PurchaseOrderBuyers = new HashSet<PurchaseOrder>();
+            Branch = new Branch();
         }
 
         public int UserId { get; set; }
@@ -72,9 +74,9 @@ namespace SolicitudesCompraAPP.Models
                     R = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                string msg = ex.Message;
+               // string msg = ex.Message;
                 throw;
             }
             
@@ -123,5 +125,47 @@ namespace SolicitudesCompraAPP.Models
             return R;
         }
 
+
+
+        public async Task<ObservableCollection<User>> GetUsers()
+        {
+
+            try
+            {
+                // Se agregan los parámetros para consumir el end point, se genera la ruta para después 
+                // adjuntar al URL base
+                string routeSufix = "Users";
+
+                string FinalApiRoute = CnnToAPI.ProductionRoute + routeSufix;
+
+                RestClient client = new RestClient(FinalApiRoute);
+
+                request = new RestRequest(FinalApiRoute, Method.Get);
+
+                // Agregar la info de seguridad, en este caso ApiKey
+                request.AddHeader(CnnToAPI.ApiKeyName, CnnToAPI.ApiKeyValue);
+                request.AddHeader(CONTENT_TYPE, MIME_TYPE);
+
+                RestResponse response = await client.ExecuteAsync(request);
+
+                HttpStatusCode status = response.StatusCode;
+
+                var UsersList = JsonConvert.DeserializeObject<ObservableCollection<User>>(response.Content);
+
+                if (status == HttpStatusCode.OK)
+                {
+                    return UsersList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                throw;
+            }
+        }
     }
 }

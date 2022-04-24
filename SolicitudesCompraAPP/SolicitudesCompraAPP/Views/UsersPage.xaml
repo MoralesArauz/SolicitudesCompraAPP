@@ -3,10 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SolicitudesCompraAPP.Views.UsersPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Lista de Usuarios!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <CollectionView x:Name="LstUsers" SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                            Padding="5,5,5,5"
+                            CornerRadius="5"
+                            IsClippedToBounds="True">
+                                <Grid RowDefinitions="Auto,Auto"
+                                          ColumnDefinitions="Auto,Auto,Auto"
+                                          >
+
+                                    <Label Grid.Column="0" 
+                                               FontSize="Body" 
+                                               Text="{Binding UserId}" 
+                                               VerticalOptions="Center" />
+
+                                    <Label Grid.Column="1"
+                                        FontSize="Medium">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FirstName}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding LastName}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

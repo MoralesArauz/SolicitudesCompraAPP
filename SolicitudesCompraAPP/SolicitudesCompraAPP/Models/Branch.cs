@@ -1,6 +1,8 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,10 +36,9 @@ namespace SolicitudesCompraAPP.Models
             return BranchId;
         }
 
-        public async Task<string> GetBranches()
+        public async Task<ObservableCollection<Branch>> GetBranches()
         {
-            string R = "";
-
+           
             try
             {
                 // Se agregan los parámetros para consumir el end point, se genera la ruta para después 
@@ -58,9 +59,15 @@ namespace SolicitudesCompraAPP.Models
 
                 HttpStatusCode status = response.StatusCode;
 
+                var BranchesList = JsonConvert.DeserializeObject<ObservableCollection<Branch>>(response.Content);
+
                 if (status == HttpStatusCode.OK)
                 {
-                    R = response.Content;
+                    return BranchesList;
+                }
+                else
+                {
+                    return null;
                 }
             }
             catch (Exception ex)
@@ -68,8 +75,6 @@ namespace SolicitudesCompraAPP.Models
                 string msg = ex.Message;
                 throw;
             }
-
-            return R;
         }
     }
 }

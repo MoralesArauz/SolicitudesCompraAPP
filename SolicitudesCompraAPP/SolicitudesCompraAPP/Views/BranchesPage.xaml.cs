@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolicitudesCompraAPP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,18 @@ namespace SolicitudesCompraAPP.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BranchesPage : ContentPage
     {
+
+        BranchViewModel branchViewModel;
         public BranchesPage()
         {
             InitializeComponent();
+            BindingContext = branchViewModel = new BranchViewModel();
+            LoadBranches();
+        }
+
+        private async void LoadBranches()
+        {
+            LstBranches.ItemsSource = await branchViewModel.GetBranchesList();
         }
     }
 }
