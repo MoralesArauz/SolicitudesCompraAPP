@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SolicitudesCompraAPP.Views.CostumerEditPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Identificación"/>
+                <Entry x:Name="TxtID" Placeholder="12345" />
+                <Label Text="Nombre"/>
+                <Entry x:Name="TxtFirstName" Placeholder="John" />
+                <Label Text="Apellidos"/>
+                <Entry x:Name="TxtLastName" Placeholder="Doe" />
+
+                <Label Text="Dirección"/>
+                <Editor x:Name="TxtAddress" 
+                        Placeholder="Dirección" 
+                        HeightRequest="150"
+                        MaxLength="255" />
+
+                <Label Text="Teléfono 1"/>
+                <Entry x:Name="TxtPhone_1" Placeholder="+506 88888888" />
+                <Label Text="Teléfono 2"/>
+                <Entry x:Name="TxtPhone_2" Placeholder="+506 88888888" />
+                <Label Text="Estado"/>
+                <Picker x:Name="PckStatus" 
+                        Title="Estado"
+                        />
+
+
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center">
+                    <Button x:Name="BtnSave" Text="Guardar" BackgroundColor="Green" Clicked="BtnSave_Clicked" />
+                    <Button x:Name="BtnCancel" Text="Cancelar" BackgroundColor="Red" Clicked="BtnCancel_Clicked" />
+                </StackLayout>
+            </StackLayout>
+            
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

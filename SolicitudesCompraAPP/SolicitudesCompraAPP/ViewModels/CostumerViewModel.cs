@@ -10,7 +10,7 @@ namespace SolicitudesCompraAPP.ViewModels
     public class CostumerViewModel : BaseViewModel
     {
 
-        Costumer MyCostumer { get; set; }
+        public Costumer MyCostumer { get; set; }
 
         public CostumerViewModel()
         {

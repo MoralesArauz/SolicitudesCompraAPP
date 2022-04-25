@@ -32,7 +32,6 @@
                         Title="Seleccione el Rol" 
                         TitleColor="Gray" 
                         ItemDisplayBinding="{Binding Description}"
-                        
                         SelectedIndexChanged="PckRole_SelectedIndexChanged"/>
 
 

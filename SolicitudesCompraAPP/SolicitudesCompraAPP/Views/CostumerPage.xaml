@@ -3,13 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SolicitudesCompraAPP.Views.CostumerPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Agregar Nuevo" />
+        <ToolbarItem x:Name="BtnAddCostumer" Text="Agregar Nuevo" Clicked="BtnAddCostumer_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <CollectionView x:Name="LstCostumers" SelectionMode="Single">
+                <SearchBar x:Name="SbNombre" 
+                           Placeholder="Nombre Cliente"
+                           TextChanged="SbNombre_TextChanged"/>
+                <CollectionView x:Name="LstCostumers" 
+                                SelectionMode="Single"
+                                SelectionChanged="LstCostumers_SelectionChanged">
                     <!--<CollectionView.ItemsLayout>
                         <GridItemsLayout Span="2" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>-->
