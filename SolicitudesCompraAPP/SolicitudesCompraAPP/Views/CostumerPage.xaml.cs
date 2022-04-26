@@ -56,5 +56,10 @@ namespace SolicitudesCompraAPP.Views
             string searchText = searchBar.Text;
             LstCostumers.ItemsSource = tempList.Where(e => e.FirstName.ToUpper().Contains(searchText.ToUpper())).ToList();
         }
+
+        private void BtnRefreshList_Clicked(object sender, EventArgs e)
+        {
+            LoadCostumers();
+        }
     }
 }

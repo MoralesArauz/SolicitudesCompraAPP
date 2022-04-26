@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SolicitudesCompraAPP.Views.CostumerPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="BtnAddCostumer" Text="Agregar Nuevo" Clicked="BtnAddCostumer_Clicked"/>
+        <ToolbarItem x:Name="BtnAddCostumer" Text="Agregar Nuevo" Clicked="BtnAddCostumer_Clicked" Order="Secondary" />
+        <ToolbarItem x:Name="BtnRefreshList" Text="Refrescar Lista" Clicked="BtnRefreshList_Clicked" Order="Secondary" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
