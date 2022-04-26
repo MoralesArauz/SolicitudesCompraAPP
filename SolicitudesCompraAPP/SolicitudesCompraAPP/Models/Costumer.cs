@@ -147,7 +147,7 @@ namespace SolicitudesCompraAPP.Models
 
                 request.AddBody(SerializedClass, MIME_TYPE);
 
-                // Esto lo envá la consulta al api y recube una respuesta que debemos
+                // Esto lo envá la consulta al api y recibe una respuesta que debemos
                 // leer
                 RestResponse response = await client.ExecuteAsync(request);
 
