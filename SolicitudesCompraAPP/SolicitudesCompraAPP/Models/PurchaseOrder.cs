@@ -40,6 +40,50 @@ namespace SolicitudesCompraAPP.Models
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
 
 
+
+        // Retorna la lista generada por el inner join a la tabla Costumers
+        public async Task<ObservableCollection<OrderForReport>> GetPurchaseOrdersWithJoin()
+        {
+
+            try
+            {
+                // Se agregan los parámetros para consumir el end point, se genera la ruta para después 
+                // adjuntar al URL base
+                string routeSufix = "PurchaseOrders/GetPurchaseOrdersWithJoin";
+
+                string FinalApiRoute = CnnToAPI.ProductionRoute + routeSufix;
+
+                RestClient client = new RestClient(FinalApiRoute);
+
+                request = new RestRequest(FinalApiRoute, Method.Get);
+
+                // Agregar la info de seguridad, en este caso ApiKey
+               // request.AddHeader(CnnToAPI.ApiKeyName, CnnToAPI.ApiKeyValue);
+                //request.AddHeader(CONTENT_TYPE, MIME_TYPE);
+
+                RestResponse response = await client.ExecuteAsync(request);
+
+                HttpStatusCode status = response.StatusCode;
+
+                var PurchaseOrderList = JsonConvert.DeserializeObject<ObservableCollection<OrderForReport>>(response.Content);
+
+                if (status == HttpStatusCode.OK)
+                {
+                    return PurchaseOrderList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                throw;
+            }
+        }
+
+
         public async Task<ObservableCollection<PurchaseOrder>> GetPurchaseOrders()
         {
 

@@ -17,15 +17,26 @@
                                        RowDefinitions="Auto,Auto"
                                           >
 
-                                    <Label Grid.Column="0" 
-                                               FontSize="Body" 
-                                               Text="{Binding PurchaseOrderId}" 
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                               FontSize="16" 
+                                               Text="{Binding OrderNumber}" 
+                                               VerticalOptions="Center"/>
+
+                                    <Label Grid.Row="0" Grid.Column="1" 
+                                               FontSize="16" 
+                                               Text="{Binding CostumerName}" 
                                                VerticalOptions="Center" />
 
-                                    <Label Grid.Column="1" 
-                                               FontSize="Body" 
-                                               Text="{Binding CostumerId}" 
+                                    <Label Grid.Row="1" Grid.Column="0" 
+                                               FontSize="14" 
+                                               Text="{Binding OrderDate}" 
                                                VerticalOptions="Center" />
+                                    
+                                    <Label Grid.Row="1" Grid.Column="1" 
+                                               FontSize="14" 
+                                               Text="{Binding OrderDetail}" 
+                                               VerticalOptions="Center" />
+
 
                                 </Grid>
                             </Frame>

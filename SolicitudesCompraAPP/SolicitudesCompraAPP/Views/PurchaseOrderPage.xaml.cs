@@ -25,7 +25,7 @@ namespace SolicitudesCompraAPP.Views
 
         private async void LoadPurchaseOrderList()
         {
-            var list = await purchaseOrderViewModel.GetPurchaseOrderList();
+            var list = await purchaseOrderViewModel.GetPurchaseOrdersWithJoin();
             LstPurchaseOrders.ItemsSource = list;
         }
 
