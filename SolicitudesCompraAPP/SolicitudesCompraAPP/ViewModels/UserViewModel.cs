@@ -14,6 +14,7 @@ namespace SolicitudesCompraAPP.ViewModels
 
         public Tools.Crypto MyCrypto { get; set; }
         public virtual UserRol MyUserRol { get; set; }
+        public virtual Branch MyBranch { get; set; }
         public List<UserRol> Roles { get; set; }
         public UserViewModel()
         {
@@ -49,6 +50,7 @@ namespace SolicitudesCompraAPP.ViewModels
                 //MyUser.BranchId = pBranchId;
                 MyUser.Status = pStatus;
                 //MyUser.UserRolId = pUserRoleId;
+                MyUser.Branch = null;
 
                 bool R = await MyUser.AddNewUser();
 

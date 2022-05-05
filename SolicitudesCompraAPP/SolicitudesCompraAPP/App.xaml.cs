@@ -12,8 +12,8 @@ namespace SolicitudesCompraAPP
         public App()
         {
             InitializeComponent();
-            MainPage = new MainFlyoutPage();
-            //MainPage = new NavigationPage( new LoginPage());
+            //MainPage = new MainFlyoutPage();
+            MainPage = new NavigationPage( new LoginPage());
         }
 
         protected override void OnStart()
